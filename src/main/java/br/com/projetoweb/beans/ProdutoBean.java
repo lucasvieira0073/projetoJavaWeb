@@ -41,7 +41,19 @@ public class ProdutoBean implements Serializable {
 		}
 		return "home?faces-redirect=true";
 	}
+	
+	public List<Produto> listar() {
+		return produtoDao.findAll();
+	}
+	
+	public int contarProdutos() {
+		return produtoDao.count();
+	}
 
+	public Produto pesquisarProduto(Integer id) {
+		return produtoDao.finById(id);
+	}
+	
 	public List<Produto> getProdutos() {
 		return produtos;
 	}

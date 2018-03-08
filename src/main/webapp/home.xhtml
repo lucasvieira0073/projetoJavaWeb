@@ -11,5 +11,37 @@
 <body>
 	<h1>Teste</h1>
 	<h:messages/>
+	
+	<br/>
+	
+	<ui:repeat var="produto" value="#{produtoBean.listar()}">
+	
+		#{produto.descricao} <br/>
+	
+	</ui:repeat>
+	<br/>
+	
+	#{produtoBean.contarProdutos()}
+	
+	<br/>
+	
+	procurando pelo id 1 ...<br/>
+	
+	resultado : #{produtoBean.pesquisarProduto(1).descricao}
+	
+	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

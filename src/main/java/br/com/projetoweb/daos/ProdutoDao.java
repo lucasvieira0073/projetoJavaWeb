@@ -1,5 +1,7 @@
 package br.com.projetoweb.daos;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 
 import br.com.projetoweb.models.Produto;
@@ -42,14 +44,33 @@ public class ProdutoDao {
 		manager.close();
 	}
 
-	/*
+	
+	@SuppressWarnings("unchecked")
 	public List<Produto> findAll() {
+		
 		EntityManager manager = new JPAUtil().getEntityManager();
-		// arrumar issoooooo
-		List<Produto> produtos = manager.createQuery("select a from Autor a").getResultList();
+		
+		List<Produto> produtos = manager.createQuery(
+				"select p from Produto p").getResultList();
+		
+		manager.close();
+		return produtos;
+	}
+	
+	public Produto finById(Integer id) {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		Produto produto = manager.find(Produto.class, id);
+		manager.close();
+		return produto;
+	}
 
+	public int count() {
+		EntityManager manager = new JPAUtil().getEntityManager();
+		long result = (Long) manager.createQuery("select count(p) from Produto p")
+				.getSingleResult();
 		manager.close();
 
-		return produtos;
-	} */
+		return (int) result;
+	}
+	
 }
